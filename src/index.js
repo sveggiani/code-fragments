@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import Home from './components/Home'
+import MainWindow from './components/MainWindow'
 
 import './styles/main.scss';
 
@@ -15,17 +15,17 @@ injectTapEventPlugin();
 ReactDOM.render(
   <MuiThemeProvider>
     <AppContainer>
-      <Home />
+      <MainWindow />
     </AppContainer>
   </MuiThemeProvider>,
   document.getElementById('root')
 )
 
 if (module.hot) {
-  module.hot.accept('./components/Home', () => {
+  module.hot.accept('./components/MainWindow', () => {
     ReactDOM.render(
       <AppContainer
-        component={require('./components/Home')}
+        component={require('./components/MainWindow')}
       />,
       document.getElementById('root')
     )

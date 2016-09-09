@@ -1,6 +1,6 @@
 // Stores basic app configuration
 
-const APP_CONFIG = {
+const AppConfig = {
   name: 'Code Fragments',
   version: '0.1.0',
   github: {
@@ -12,4 +12,4 @@ const APP_CONFIG = {
   }
 }
 
-export default APP_CONFIG
+export default AppConfig

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import APP_CONFIG from '../config'
+import AppConfig from '../config'
 import axios from 'axios';
 import {List, ListItem} from 'material-ui/List'
 import IconButton from 'material-ui/IconButton';
@@ -9,7 +9,8 @@ import ActionCached from 'material-ui/svg-icons/action/cached';
 export default class SnippetList extends Component {
 
   static propTypes = {
-    username: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
+    updateStatus: PropTypes.func
   }
 
   static defaultProps = {
@@ -33,26 +34,30 @@ export default class SnippetList extends Component {
 
   getSnippetsList() {
     // define endpoint
-    const source = `${APP_CONFIG.github.endpoint}/users/${this.props.username}/gists`
+    const source = `${AppConfig.github.endpoint}/users/${AppConfig.github.username}/gists`
     // try to get snippets
     this.serverRequest = axios.get(
       source,
       {
         headers: {
-          'Accept': APP_CONFIG.github.parameters.accept
+          'Accept': AppConfig.github.parameters.accept
         }
       }
     )
     .then( response => {
-      // filter code-fragment gists
+      // update state filtering code-fragment gists
       this.setState({
         snippets: response.data.filter(snippet => {
           return snippet.description.includes('#code-fragments')
         })
       })
     })
-    .catch( (error) => {
-      // TODO: show a message using SnackBar component
+    .catch( () => {
+      // on error loading snippets show error
+      this.props.updateStatus({
+        open: true,
+        message: 'Couldn\'t load snippets'
+      })
     })
   }
 
