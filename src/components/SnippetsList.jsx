@@ -23,6 +23,7 @@ export default class SnippetList extends Component {
     this.state = {
       snippets: []
     }
+    // bind custom methods
     this.getSnippetsList = this.getSnippetsList.bind(this);
   }
 
@@ -75,8 +76,8 @@ export default class SnippetList extends Component {
       : <ListItem primaryText='No snippets available' disabled />
 
     return (
-      <div>
-        <List style={{width: '33%'}}>
+      <div className="snippets-list">
+        <List>
           {snippets}
         </List>
         <IconButton onClick={this.getSnippetsList}>

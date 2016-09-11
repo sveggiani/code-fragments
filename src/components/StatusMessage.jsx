@@ -16,6 +16,8 @@ export default class StatusMessage extends Component {
     this.state = {
       open: false
     }
+    // bind custom methods
+    this.handleRequestClose = this.handleRequestClose.bind(this)
   }
 
   handleRequestClose = () => {

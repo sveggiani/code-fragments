@@ -15,6 +15,7 @@ export default class MainWindow extends Component {
     appName: AppConfig.name
   }
 
+
   constructor(props) {
     super(props)
     // define default values
@@ -28,6 +29,8 @@ export default class MainWindow extends Component {
         duration: this.defaultStatusMessageDuration
       }
     }
+    // bind custom methods
+    this.updateStatusMessage = this.updateStatusMessage.bind(this)
   }
 
   updateStatusMessage = message => {
