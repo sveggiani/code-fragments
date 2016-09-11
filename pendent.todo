@@ -3,3 +3,4 @@ UI:
 
 Logic:
   ✓ Solve a problem when changing the StatusMessage duration that affect subsecuent messages @done(09-09-2016 00:49) @project(Logic)
+  ☐ Implement Redux state storing (e.g. snippets, status messages, configuration, etc.)
